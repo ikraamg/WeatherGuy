@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
@@ -11,13 +12,17 @@ module.exports = {
   devServer: {
     contentBase: './dist',
   },
+  plugins: [
+    new Dotenv(),
+  ],
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(scss)$/,
         use: [
           'style-loader',
           'css-loader',
+          'sass-loader',
         ],
       },
       {
