@@ -35,8 +35,8 @@ const autoSearch = new AutoComplete({
     element: 'ul',
   },
   maxResults: 5,
-  threshold: 3,
-  debounce: 200,
+  threshold: 0,
+  debounce: 0,
   searchEngine: 'strict',
   highlight: true,
   resultItem: {
@@ -49,7 +49,7 @@ const autoSearch = new AutoComplete({
     const result = document.createElement('li');
     result.setAttribute('class', 'no_result');
     result.setAttribute('tabindex', '1');
-    result.innerHTML = 'No Results';
+    result.innerHTML = 'No results found, please type at least 4 characters or the full name of the city.abs';
     document.querySelector('#location_list').appendChild(result);
   },
   onSelection: feedback => {
