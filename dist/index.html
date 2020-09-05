@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Guy</title>
+  </head>
+
+  <body>
+    <main class="container justify-content-center">
+      <div class="row justify-content-center">
+        <h1 class="heading">The Weather Guy</h1>
+        <input
+          id="autoComplete"
+          tabindex="1"
+          class="col-12 align-self-center"
+          type="text"
+        />
+      </div>
+      <div class="custom-control custom-switch celciusDiv">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="customSwitch1"
+          checked
+        />
+        <label class="custom-control-label" for="customSwitch1"
+          >Toggle off for °F
+        </label>
+      </div>
+      <div
+        class="m-auto row justify-content-center align-items-center todayParent col-12 flex-nowrap flex-column"
+      ></div>
+      <div
+        class="m-auto row justify-content-center align-items-center forecastParent col-12 flex-nowrap flex-column"
+      ></div>
+    </main>
+
+    <script src="bundle.js"></script>
+  </body>
+</html>
