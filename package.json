@@ -31,6 +31,7 @@
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "jquery": "^3.5.1",
+    "jsdom": "^16.4.0",
     "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
     "postcss-loader": "^3.0.0",
@@ -45,6 +46,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@tarekraafat/autocomplete.js": "^7.2.0",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1"
