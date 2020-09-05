@@ -1,5 +1,42 @@
 @import '~bootstrap/scss/bootstrap';
+@import '../node_modules/@tarekraafat/autocomplete.js/dist/css/autoComplete.css';
+
+$color-red: #e27d60;
+$color-lightblue: #85dcb8;
+$color-orange: #e8a87c;
+$color-maroon: #c38d9e;
+$color-blue: #41b3a3;
+
+body {
+  background-color: $color-blue;
+}
 
 main {
-  height: 100vh;
+  margin-top: 10vh;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: $color-lightblue;
+}
+
+.forecastParent {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.heading {
+  margin-bottom: 3vh;
+  color: rgba(0, 0, 0, 0.801);
+  border-radius: 5px;
+}
+
+h3 {
+  justify-self: center;
+  color: rgba(0, 0, 0, 0.801);
+}
+
+.todayRow,
+.forecastRow {
+  background-color: $color-red;
+  border-radius: 10px;
+  padding: 10px;
 }
