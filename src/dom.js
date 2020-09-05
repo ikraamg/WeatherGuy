@@ -65,8 +65,9 @@ const displayController = (() => {
   };
 
   const displayWeather = (data) => {
-    currentWeather(data);
-    forecastedWeather(data);
+    const toggleStatus = document.querySelector('#customSwitch1').checked;
+    currentWeather(data, toggleStatus);
+    forecastedWeather(data, toggleStatus);
   };
 
   return { displayWeather, clearWeather };
