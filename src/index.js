@@ -1,18 +1,61 @@
 import 'bootstrap';
 import './style.scss';
+import AutoComplete from '@tarekraafat/autocomplete.js';
+import displayController from './dom';
 
-const API_KEY = process.env.API;
-const inputLocation = document.querySelector('#locationInput');
-const searchBut = document.querySelector('#search');
-const getLocation = async (location) => {
-  const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}`);
+const API_KEY = '5ce7101c4fb54407a4b150637200309';
+
+const getWeather = async (location) => {
+  const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=7`);
   const data = await response.json();
   return data;
 };
 
-const searchLocation = async () => {
-  const location = inputLocation.value;
-  getLocation(location).then(data => console.log(data));
+const searchWeather = async () => {
+  const query = document.querySelector('#autoComplete').value;
+  const source = await fetch(`http://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`);
+  const data = await source.json();
+  return data;
 };
 
-searchBut.addEventListener('click', searchLocation);
+// eslint-disable-next-line no-unused-vars
+const autoSearch = new AutoComplete({
+  data: {
+    src: searchWeather,
+    key: ['name'],
+    cache: false,
+  },
+  resultsList: {
+    render: true,
+    container: source => {
+      source.setAttribute('id', 'location_list');
+    },
+    destination: document.querySelector('#autoComplete'),
+    position: 'afterend',
+    element: 'ul',
+  },
+  maxResults: 5,
+  threshold: 3,
+  debounce: 200,
+  searchEngine: 'strict',
+  highlight: true,
+  resultItem: {
+    content: (data, source) => {
+      source.textContent = data.value.name;
+    },
+    element: 'li',
+  },
+  noResults: () => {
+    const result = document.createElement('li');
+    result.setAttribute('class', 'no_result');
+    result.setAttribute('tabindex', '1');
+    result.innerHTML = 'No Results';
+    document.querySelector('#location_list').appendChild(result);
+  },
+  onSelection: feedback => {
+    displayController.clearWeather();
+    getWeather(feedback.selection.value.name).then((data) => {
+      displayController.displayWeather(data);
+    });
+  },
+});
