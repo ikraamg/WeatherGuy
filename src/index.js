@@ -6,14 +6,14 @@ import displayController from './dom';
 const API_KEY = '5ce7101c4fb54407a4b150637200309';
 
 const getWeather = async (location) => {
-  const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=7`);
+  const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=7`);
   const data = await response.json();
   return data;
 };
 
-const searchWeather = async () => {
+const searchLocations = async () => {
   const query = document.querySelector('#autoComplete').value;
-  const source = await fetch(`http://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`);
+  const source = await fetch(`https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`);
   const data = await source.json();
   return data;
 };
@@ -21,7 +21,7 @@ const searchWeather = async () => {
 // eslint-disable-next-line no-unused-vars
 const autoSearch = new AutoComplete({
   data: {
-    src: searchWeather,
+    src: searchLocations,
     key: ['name'],
     cache: false,
   },
